@@ -118,7 +118,7 @@ class PolyFitMethod(object):
         """
 
         # TODO: Calculate for the weights using np.polyfit()
-        self.W = None
+        self.W = np.polyfit(X,y,1)
 
         return self.W
 
@@ -138,6 +138,10 @@ class PolyFitMethod(object):
         # TODO: Compute for the predictions of the model on new data using the
         # learned weight vectors.
         # Hint: Use np.poly1d().
-        prediction = None
+
+        polynomial = np.poly1d(self.W)
+
+        # Evaluate the polynomial on the input data X
+        prediction = polynomial(X)
 
         return prediction
